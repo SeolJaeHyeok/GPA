@@ -1,35 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:great_place_app/provider/great_places.dart';
+import 'package:great_place_app/screens/places_list_screen.dart';
+
+import 'package:provider/provider.dart';
+
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title:Text("Home")
-      ),
-      body: Center(
-        child: Text('Home'),
+    return ChangeNotifierProvider.value(
+      value: GreatePlaces(),
+      child: MaterialApp(
+        title: 'Great Place App',
+        theme: ThemeData(
+          primarySwatch: Colors.indigo,
+          accentColor: Colors.amber,
+        ),
+        home: PlacesListScreen(),
       ),
     );
   }
